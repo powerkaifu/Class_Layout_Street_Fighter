@@ -18,8 +18,8 @@ body {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  padding: 0.3rem;
-  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
   transition: 0.5s;
 }
 /* 按鈕顏色及滑鼠移入的效果 */
@@ -32,13 +32,9 @@ body {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: orange;
-  border-color: orange;
+  background-color: rgb(180, 0, 0);
+  border-color: rgb(180, 0, 0);
   cursor: pointer;
-}
-
-.bg-primary {
-  background-color: #000;
 }
 
 .h-100 {
@@ -153,6 +149,7 @@ body {
   font-style: italic;
   color: yellow;
   text-shadow: 0 0 5px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 1), 0 0 15px rgba(0, 0, 0, 1);
+  margin-bottom: 1rem;
 }
 
 /* section02 遊戲介紹 -------------------------------------------------------------------------------- */
