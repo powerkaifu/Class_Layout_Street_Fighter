@@ -1,0 +1,392 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* Noto Sans TC 為 google fonts */
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+/* 建立一個寬度一致且水平置中的容器給大家使用 */
+.container {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* 建立基本按鈕 */
+.btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  transition: 0.5s;
+}
+/* 按鈕顏色及滑鼠移入的效果 */
+/* 橘色組 */
+.btn-primary {
+  color: #fff;
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: orange;
+  border-color: orange;
+  cursor: pointer;
+}
+
+.bg-primary {
+  background-color: #000;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+/* header 固定選單 ----------------------------------------------------------------------------------- */
+#header {
+  color: white;
+  width: 75%;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+#header .navbar {
+  background: blue;
+  /* text-align: center; */
+  position: relative;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#header .menu {
+  font-size: 0;
+  text-align: center;
+  background: url('../images/nav-bg-full.jpg') repeat-x center center;
+  background-color: black;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 25px;
+  z-index: -1;
+}
+
+#header .menu::before {
+  content: '';
+  background: url('../images/nav-bg-left.png') no-repeat left top/cover;
+  width: 12px;
+  height: 100%;
+  position: absolute;
+  left: -10px;
+}
+
+#header .menu::after {
+  content: '';
+  background: url('../images/nav-bg-right.png') no-repeat right top/cover;
+  width: 12px;
+  height: 100%;
+  position: absolute;
+  right: -10px;
+}
+
+#header .menu li {
+  font-size: 1rem;
+  display: inline-block;
+  padding: 1rem 0;
+}
+
+#header .menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 1.5rem;
+  transition: 0.5s;
+}
+
+#header .menu li a:hover {
+  background: rgba(255, 60, 0, 0.3);
+}
+
+/* 第三個 li 右側推移 15% 的空間 */
+#header .menu li:nth-child(3) {
+  margin-right: 15%;
+}
+
+/* logo */
+#header .logo {
+  width: 12%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+/* 別忘了圖片要符合與父元素的尺寸要設定 width 100% */
+#header .logo img {
+  width: 100%;
+}
+
+/* section01 回首頁 ---------------------------------------------------------------------------------- */
+#section01 {
+  background: url('../images/section01-bg.jpg') no-repeat center center/cover;
+  position: relative;
+}
+
+#section01 .main-news {
+  /* background: rgba(0, 0, 0, 0.5); */
+  width: 100%;
+  text-align: center;
+  color: white;
+
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section01 .main-news h1 {
+  font-size: 2.5rem;
+  font-style: italic;
+  color: yellow;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 1), 0 0 15px rgba(0, 0, 0, 1);
+}
+
+/* section02 遊戲介紹 -------------------------------------------------------------------------------- */
+#section02 {
+  background: url('../images/section02-bg.jpg') no-repeat center center/cover;
+}
+
+#section02 .container {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+#section02 .row {
+  font-size: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section02 .col {
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  vertical-align: middle;
+  width: 50%;
+  /* background: #fff; */
+  padding: 5rem 1rem;
+  display: inline-block;
+}
+
+#section02 .col h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#section02 .col p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* 別忘了圖片要符合與父元素的尺寸要設定 width 100% */
+#section02 .col img {
+  width: 100%;
+}
+
+#section02 .col iframe {
+  width: 100%;
+  height: 300px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+}
+/* section03 角色列表 -------------------------------------------------------------------------------- */
+#section03 {
+  background: linear-gradient(45deg, #222 40%, #aaa 40%);
+}
+
+#section03 .container {
+  position: relative;
+}
+
+/* 切出上方角色資料容器 */
+#section03 .col:nth-child(1) {
+  height: 65%;
+  background: transparent;
+}
+
+/* 切出下方角色清單容器 */
+#section03 .col:nth-child(2) {
+  height: 35%;
+  background: transparent;
+}
+
+/* 上方角色資料 */
+#section03 .role_info {
+  background: transparent;
+}
+
+#section03 .role_info > div {
+  display: none;
+  height: 100%;
+  background: transparent;
+}
+
+/* 人物大圖 - 使用浮動左側 */
+#section03 .role_info .role {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 4rem 1.5rem 0;
+  float: left;
+}
+
+#section03 .role_info .role img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 人物資料 - 使用浮動右側 */
+#section03 .role_info .info {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 8rem 1rem 5rem;
+  float: right;
+  background: transparent;
+}
+
+#section03 .role_info .info h1 {
+  font-size: 2rem;
+}
+
+#section03 .role_info .info p {
+  padding: 1rem 0;
+  line-height: 1.2;
+}
+
+/* 隱藏式 + 遠端的觸發器 */
+#section03 .role_info input {
+  display: none;
+}
+
+/* 當 radio 選單被觸發時，觸發身邊的兄弟元素 div，讓其顯示 */
+#section03 .role_info input:checked + div {
+  display: block;
+}
+
+/* 角色清單 */
+#section03 .role_list {
+  font-size: 0;
+  text-align: center;
+}
+
+/* 調整角色清單圖片的外框大小及轉型 */
+#section03 .role_list label {
+  width: 7%;
+  display: inline-block;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#section03 .role_list img {
+  width: 100%;
+}
+
+#section03 .role_list label:hover {
+  filter: drop-shadow(0 0 5px rgb(255, 0, 0)) drop-shadow(0 0 10px rgba(255, 0, 0, 1));
+}
+
+/* 角色只做四個，後面的都不要做，暗色 disable 感覺  */
+#section03 .role_list label:nth-child(4) ~ label {
+  filter: brightness(0.4);
+  cursor: auto;
+}
+
+/* footer ----------------------------------------------------------------------------------- */
+#footer {
+  background: black;
+  color: white;
+  padding: 2rem 0;
+}
+
+#footer .row {
+  overflow: auto;
+}
+
+#footer .row .col {
+  width: 25%;
+  float: left;
+}
+
+#footer .card {
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+#footer h1 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#footer li {
+  line-height: 1.4;
+  padding-left: 1.5rem;
+}
+
+#footer .card h3 {
+  margin: 0.5rem 0;
+}
+
+#footer .card > i {
+  width: 30px;
+  font-size: 1.3rem;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding: 2rem 0 0;
+}
+
+/* backtop */
+.backtop {
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 0.8rem;
+  position: fixed;
+  right: 3%;
+  bottom: 3%;
+}
+
+.backtop .square {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.backtop:hover .square {
+  transform: rotate(45deg) scale(1.2);
+  background: rgba(0, 0, 0, 1);
+}
+
+.backtop a {
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  position: absolute;
+  z-index: 1;
+}
