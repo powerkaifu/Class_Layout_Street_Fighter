@@ -45,6 +45,7 @@ body {
 #header {
   color: white;
   width: 75%;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -261,10 +262,11 @@ body {
 
 #section03 .role_info .info h1 {
   font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 #section03 .role_info .info p {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   line-height: 1.2;
 }
 
@@ -302,7 +304,7 @@ body {
 }
 
 /* 角色只做四個，後面的都不要做，暗色 disable 感覺  */
-#section03 .role_list label:nth-child(4) ~ label {
+#section03 .role_list label:nth-child(15) ~ label {
   filter: brightness(0.4);
   cursor: auto;
 }
@@ -339,7 +341,7 @@ body {
 }
 
 #footer .card h3 {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 #footer .card > i {
