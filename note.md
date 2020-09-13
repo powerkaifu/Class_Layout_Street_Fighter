@@ -23,7 +23,7 @@ Fighter》系列史上首次為「PlayStation®4」玩家和 PC 玩家提供能�
 最新的「Champion Edition」合集除了包含所有基本內容外，還收錄了《Street Fighter》至今（Season
 4 為止）發放了的超過 2,000 款豐富又充滿魅力的內容。現在就以超值價格獲取充滿個性的角色們以及豐富的內容，開始這場激動人心的對戰吧！
 
-[影片連結](https://www.youtube.com/embed/3l4mux-seHI?rel=0&autoplay=1&loop=1)
+[影片連結](https://www.youtube.com/embed/GJzGl0SbRyE?rel=0&autoplay=1&loop=1)
 
 # 角色列表
 
