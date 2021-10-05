@@ -1,94 +1,53 @@
+/* 設定 html,body 抓到瀏覽器高度 */
 html,
 body {
   height: 100%;
+}
+
+/* 讓高度滿版，將區塊與瀏覽器高度一致 */
+.h-100 {
+  height: 100% !important;
 }
 
 body {
   /* Noto Sans TC 為 google fonts */
   font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 }
-/* 建立一個寬度一致且水平置中的容器給大家使用 */
+
+/* 建立一個寬度一致且水平置中的容器，目的是每個區塊的內容寬度一致 */
 .container {
   width: 75%;
   margin-right: auto;
   margin-left: auto;
 }
-/* 建立基本按鈕 */
-.btn {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0.8rem 1rem;
-  border-radius: 0.5rem;
-  transition: 0.5s;
-}
-/* 按鈕顏色及滑鼠移入的效果 */
-/* 橘色組 */
-.btn-primary {
-  color: #fff;
-  background-color: #ff0000;
-  border-color: #ff0000;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: rgb(180, 0, 0);
-  border-color: rgb(180, 0, 0);
-  cursor: pointer;
-}
-
-.h-100 {
-  height: 100% !important;
-}
 
 /* header 固定選單 ----------------------------------------------------------------------------------- */
 #header {
-  color: white;
   width: 75%;
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  height: 60px;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
-}
-
-#header .navbar {
-  background: blue;
-  /* text-align: center; */
-  position: relative;
-  width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  /* 固定選單 z-index 需在最上層，設定為 1，這是因為後面的 section01 也是在定位層 (position:relative) */
+  z-index: 1;
+  /* filter 多屬性值之間不用逗點 */
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 #header .menu {
-  font-size: 0;
-  text-align: center;
-  background: url('../images/nav-bg-full.jpg') repeat-x center center;
-  background-color: black;
+  /* 絕對定位會緊縮內容寬度，需設定 width，這裡是 100% */
   width: 100%;
   height: 60px;
+  /* 水平置中裡面的 inline-block li */
+  text-align: center;
+  background: url('../images/nav-bg-full.jpg') repeat-x center center;
+  font-size: 0;
+
   position: absolute;
   top: 25px;
+  /* 1. 若 Logo 在上層，.menu 會蓋到 Logo，設成 z-index:-1 */
   z-index: -1;
-}
-
-#header .menu::before {
-  content: '';
-  background: url('../images/nav-bg-left.png') no-repeat left top/cover;
-  width: 12px;
-  height: 100%;
-  position: absolute;
-  left: -10px;
-}
-
-#header .menu::after {
-  content: '';
-  background: url('../images/nav-bg-right.png') no-repeat right top/cover;
-  width: 12px;
-  height: 100%;
-  position: absolute;
-  right: -10px;
+  /* 2. 也可以將 Logo 與 ul 的結構對調，Logo 在下，.menu 在上，後方蓋前方 */
 }
 
 #header .menu li {
@@ -114,15 +73,38 @@ body {
   margin-right: 15%;
 }
 
+/* 使用偽元素來放置左、右兩側的背景圖 */
+#header .menu::before {
+  /* 偽元素必須有 content */
+  content: '';
+  background: url('../images/nav-bg-left.png') no-repeat left top/cover;
+  width: 12px;
+  height: 60px;
+
+  /* 偽元素誕生是 inline，absolute 可以將其變成緊縮區塊化 */
+  position: absolute;
+  left: -10px;
+}
+
+#header .menu::after {
+  content: '';
+  background: url('../images/nav-bg-right.png') no-repeat right top/cover;
+  width: 12px;
+  height: 60px;
+
+  position: absolute;
+  right: -10px;
+}
+
 /* logo */
 #header .logo {
-  width: 12%;
+  width: 15%;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
 }
 
-/* 別忘了圖片要符合與父元素的尺寸要設定 width 100% */
+/* 圖片要符合與父元素 .logo 的尺寸要設定 width 100% */
 #header .logo img {
   width: 100%;
 }
@@ -134,10 +116,8 @@ body {
 }
 
 #section01 .main-news {
-  /* background: rgba(0, 0, 0, 0.5); */
   width: 100%;
   text-align: center;
-  color: white;
 
   position: absolute;
   top: 75%;
@@ -150,7 +130,6 @@ body {
   font-style: italic;
   color: yellow;
   text-shadow: 0 0 5px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 1), 0 0 15px rgba(0, 0, 0, 1);
-  margin-bottom: 1rem;
 }
 
 /* section02 遊戲介紹 -------------------------------------------------------------------------------- */
@@ -159,14 +138,18 @@ body {
 }
 
 #section02 .container {
+  /* background: rgba(0, 0, 0, 0.5); */
+  /* 也可為 display: table; */
+  /* overflow: auto; */
   height: 100%;
-  overflow: auto;
   position: relative;
 }
 
 #section02 .row {
   font-size: 0;
   width: 100%;
+  display: inline-block;
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -174,14 +157,19 @@ body {
 }
 
 #section02 .col {
+  /* box-sizing 可重新計算 box 總寬度、高度，width、height 包含了 padding、border */
+  box-sizing: border-box;
   color: white;
   font-size: 1rem;
-  box-sizing: border-box;
-  vertical-align: middle;
   width: 50%;
-  /* background: #fff; */
   padding: 5rem 1rem;
   display: inline-block;
+  /* vertical-align 作用在具有 inline 屬性或置換元素(img,input)，block 級不會有作用 */
+  /* 左側內容文字變多有垂直置中的效果 */
+  vertical-align: middle;
+
+  /* float 排版 */
+  /* float: left; */
 }
 
 #section02 .col h1 {
@@ -190,13 +178,10 @@ body {
 }
 
 #section02 .col p {
-  margin-bottom: 1rem;
   line-height: 1.5;
-}
-
-/* 別忘了圖片要符合與父元素的尺寸要設定 width 100% */
-#section02 .col img {
-  width: 100%;
+  text-indent: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
 }
 
 #section02 .col iframe {
@@ -205,36 +190,29 @@ body {
   border: 5px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
 }
+
 /* section03 角色列表 -------------------------------------------------------------------------------- */
 #section03 {
   background: linear-gradient(45deg, #222 40%, #aaa 40%);
 }
 
-#section03 .container {
-  position: relative;
-}
-
-/* 切出上方角色資料容器 */
+/* 切出上方角色資料容器 65% */
 #section03 .col:nth-child(1) {
   height: 65%;
-  background: transparent;
+  /* background-color: lightcyan; */
 }
 
-/* 切出下方角色清單容器 */
+/* 切出下方角色清單容器 35% */
 #section03 .col:nth-child(2) {
   height: 35%;
-  background: transparent;
+  /* background-color: lightgreen; */
 }
 
-/* 上方角色資料 */
-#section03 .role_info {
-  background: transparent;
-}
-
-#section03 .role_info > div {
+/* 上方角色資料大區塊 */
+#section03 .role_info>div {
   display: none;
   height: 100%;
-  background: transparent;
+  /* background: transparent; */
 }
 
 /* 人物大圖 - 使用浮動左側 */
@@ -242,7 +220,7 @@ body {
   box-sizing: border-box;
   width: 50%;
   height: 100%;
-  padding: 4rem 1.5rem 0;
+  padding: 5rem 1.5rem 0;
   float: left;
 }
 
@@ -258,7 +236,7 @@ body {
   height: 100%;
   padding: 8rem 1rem 5rem;
   float: right;
-  background: transparent;
+  /* background: transparent; */
 }
 
 #section03 .role_info .info h1 {
@@ -271,23 +249,30 @@ body {
   line-height: 1.2;
 }
 
-/* 隱藏式 + 遠端的觸發器 */
+/*
+  input radio 是一個控制器，具有單選狀態的功能，
+  可以在選擇某個選項被觸發後（checked 狀態），觸發某個元素做動作
+*/
+/* 隱藏所有 input，還是可以在結構中看到它們，並不是移除掉 */
 #section03 .role_info input {
   display: none;
 }
 
-/* 當 radio 選單被觸發時，觸發身邊的兄弟元素 div，讓其顯示 */
-#section03 .role_info input:checked + div {
+/* + 相鄰選擇器 */
+/* 當 radio 選單被觸發時，觸發下面的 div，讓其顯示 */
+#section03 .role_info input:checked+div {
   display: block;
 }
 
-/* 角色清單 */
+/* 下方角色清單大區塊 */
 #section03 .role_list {
   font-size: 0;
   text-align: center;
+  background: transparent;
 }
 
 /* 調整角色清單圖片的外框大小及轉型 */
+/* label 是觸發 radio box 為 checked 的關鍵 */
 #section03 .role_list label {
   width: 7%;
   display: inline-block;
@@ -304,8 +289,9 @@ body {
   filter: drop-shadow(0 0 5px rgb(255, 0, 0)) drop-shadow(0 0 10px rgba(255, 0, 0, 1));
 }
 
-/* 角色只做四個，後面的都不要做，暗色 disable 感覺  */
-#section03 .role_list label:nth-child(15) ~ label {
+/* ~ 同層全體選擇器 */
+/* 第 15 個腳色以後做樣式 */
+#section03 .role_list label:nth-child(15)~label {
   filter: brightness(0.4);
   cursor: auto;
 }
@@ -345,7 +331,7 @@ body {
   margin: 1rem 0;
 }
 
-#footer .card > i {
+#footer .card>i {
   width: 30px;
   font-size: 1.3rem;
 }
@@ -355,7 +341,7 @@ body {
   padding: 2rem 0 0;
 }
 
-/* backtop */
+/* backtop 回到最上面 */
 .backtop {
   width: 40px;
   height: 40px;
@@ -390,3 +376,27 @@ body {
   position: absolute;
   z-index: 1;
 }
+
+
+/* 建立基本按鈕 */
+/* .btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.5s;
+} */
+/* 按鈕顏色及滑鼠移入的效果 */
+/* .btn-primary {
+  color: #fff;
+  background-color: #ff0000;
+  border-color: #ff0000;
+} */
+
+/* .btn-primary:hover {
+  color: #fff;
+  background-color: rgb(180, 0, 0);
+  border-color: rgb(180, 0, 0);
+  cursor: pointer;
+} */
